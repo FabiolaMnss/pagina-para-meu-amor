@@ -1,0 +1,230 @@
+/* Importação da fonte 'Dancing Script' do Google Fonts para um toque romântico */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+/* Importação da fonte 'Playfair Display' para os parágrafos */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+
+body {
+    /* Fundo dinâmico e animado com gradiente */
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0, #e1bee7, #d5a5e3);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Adicionado para evitar barra de rolagem por causa das partículas */
+}
+
+/* Animação do gradiente de fundo */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estilo para o título H1 geral da página (fora da caixa de mensagem) */
+h1 {
+    color: #880e4f;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Estilos para o botão principal */
+button {
+    padding: 15px 35px;
+    background-color: #d81b60;
+    color: white;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    margin-top: 40px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #b3004b;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para a caixa de conteúdo principal */
+.content-box {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    color: #4a4a4a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.content-box h1 {
+    color: #880e4f;
+    margin-bottom: 20px;
+}
+
+.content-box p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* --- ESTILOS DA CAIXA DE MENSAGEM BONITINHA (POP-UP) --- */
+#mensagemBox {
+    position: fixed; /* Mudei para 'fixed' para que o pop-up cubra a tela toda */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    box-sizing: border-box;
+
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mensagem-visivel {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.mensagem-escondida {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.mensagem-conteudo {
+    background-color: #fdfdff;
+    color: #4a4a4a;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transform: scale(0.6);
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+    width: 90%;
+}
+
+.mensagem-visivel .mensagem-conteudo {
+    transform: scale(1);
+}
+
+.mensagem-conteudo h2 {
+    color: #d81b60;
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.mensagem-conteudo p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.mensagem-conteudo .assinatura {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6em;
+    color: #880e4f;
+    display: block;
+    margin-top: 20px;
+}
+
+#fotoMensagem {
+    max-width: 90%;
+    height: auto;
+    border-radius: 15px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.6s ease-in-out 0.2s, transform 0.6s ease-in-out 0.2s;
+}
+
+.mensagem-visivel #fotoMensagem {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#fecharMensagem {
+    background-color: #880e4f;
+    margin-top: 25px;
+    font-size: 1.1em;
+}
+
+#fecharMensagem:hover {
+    background-color: #5d0232;
+}
+
+/* ----- ESTILOS PARA A BARRA DE ROLAGEM (VISUAL MAIS ELABORADO) ----- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d81b60;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #b3004b;
+    border-color: rgba(255, 255, 255, 1);
+}
+
+* {
+    scrollbar-color: #d81b60 rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+}
+
+/* Adicionamos a classe para as partículas */
+.particle {
+    position: fixed;
+    top: 0;
+    left: 0;    
+    font-size: 2em;
+    pointer-events: none;
+    z-index:200;
+}
